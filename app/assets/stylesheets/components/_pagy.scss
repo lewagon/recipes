@@ -1,0 +1,11 @@
+.page-item {
+  .page-link {
+    color: $danger;
+  }
+  &.active {
+    .page-link {
+      background-color: $danger;
+      border-color: $danger;
+    }
+  }
+}
