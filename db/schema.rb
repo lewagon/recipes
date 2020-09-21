@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2020_09_21_105442) do
   create_table "recipes", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.integer "difficulty"
+    t.integer "difficulty", default: 0, null: false
     t.integer "cooktime"
-    t.integer "price"
+    t.integer "price", default: 0, null: false
     t.boolean "vegetarian", default: false, null: false
     t.boolean "vegan", default: false, null: false
     t.string "image_url"
