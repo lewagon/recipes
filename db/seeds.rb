@@ -1,8 +1,7 @@
-if Rails.env.development?
-  puts 'cleanup DB...'
-  Recipe.destroy_all
-  puts 'DB cleaned.'
-end
+puts 'cleanup DB...'
+Cuisine.destroy_all
+Recipe.destroy_all
+puts 'DB cleaned.'
 
 puts 'Creating recipes...'
 
