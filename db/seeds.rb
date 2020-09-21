@@ -24,7 +24,8 @@ recipes.each do |recipe|
     vegan: recipe['vegan'] || false,
     gluten_free: recipe['glutenFree'] || false,
     healthy: recipe['veryHealthy'] || false,
-    image_url: recipe['image']
+    image_url: recipe['image'],
+    instructions: recipe['instructions']
   )
 
   recipe['extendedIngredients'].each do |ingredient|
