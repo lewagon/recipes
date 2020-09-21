@@ -1,1 +1,22 @@
-<div class="container"></div>
+<div class="container my-5">
+  <h1>All Recipes</h1>
+
+  <div class="recipe-container">
+    <div class="row">
+      <% @recipes.each do |recipe| %>
+        <div class="col-12 col-md-4 col-lg-3">
+          <div class="recipe my-3">
+            <%= link_to recipe_path(recipe), class: 'text-decoration-none' do %>
+              <%= image_tag recipe.image_url, class: 'recipe-img' %>
+              <div class="p-2">
+                <small class="font-weight-lighter text-secondary mr-2"><i class="fas fa-clock mr-2"></i><span class="recipe-cooktime"><%= recipe.cooktime %> min</span></small>
+                <small class="font-weight-lighter text-secondary mr-2"><%= difficulty(recipe) %> <%= recipe.difficulty.humanize %></small>
+                <p class="text-dark single-line-content w-100 font-weight-bold mb-0"><%= recipe.name %></p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
