@@ -1,0 +1,7 @@
+<div class="container my-5">
+  <h1>All Recipes</h1>
+
+  <div class="recipes-container" data-controller="recipes" data-action="load@window->recipes#renderRecipes">
+    <%= render 'recipes', recipes: @recipes, pagy: @pagy %>
+  </div>
+</div>

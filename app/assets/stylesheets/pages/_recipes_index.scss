@@ -1,0 +1,32 @@
+.recipes-container {
+  .recipe {
+    background-color: $white;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: .5s all cubic-bezier(0.21, 1.05, 0.24, 1.41);
+
+    &:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .recipe-img {
+      border-radius: 5px 5px 0 0;
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+#recipes_advanced, #recipe_advanced {
+  position: relative;
+  min-height: 100vh;
+  .spinner-position {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,16 +1,98 @@
-// Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+/* -------------------------------------
+ * Fonts
+ * ------------------------------------- */
+@font-face {
+  font-family: "FreightSansPro";
+  src: font-url('freight-sans-pro/FreightSansProBook-Regular.eot'),
+       font-url('freight-sans-pro/FreightSansProBook-Regular.ttf'),
+       font-url('freight-sans-pro/FreightSansProBook-Regular.woff'),
+       font-url('freight-sans-pro/FreightSansProBook-Regular.woff2');
+  font-weight: normal;
+}
+@font-face {
+  font-family: "FreightSansPro";
+  src: font-url('freight-sans-pro/FreightSansProBook-Italic.eot'),
+       font-url('freight-sans-pro/FreightSansProBook-Italic.ttf'),
+       font-url('freight-sans-pro/FreightSansProBook-Italic.woff'),
+       font-url('freight-sans-pro/FreightSansProBook-Italic.woff2');
+  font-style: italic;
+}
+@font-face {
+  font-family: "FreightSansPro";
+  src: font-url('freight-sans-pro/FreightSansProSemibold-Regular.eot'),
+       font-url('freight-sans-pro/FreightSansProSemibold-Regular.ttf'),
+       font-url('freight-sans-pro/FreightSansProSemibold-Regular.woff'),
+       font-url('freight-sans-pro/FreightSansProSemibold-Regular.woff2');
+  font-weight: bold;
+}
+@font-face {
+  font-family: 'League Gothic';
+  src: font-url('league-gothic/LeagueGothic.eot'),
+       font-url('league-gothic/LeagueGothic.ttf'),
+       font-url('league-gothic/LeagueGothic.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/Thin.woff');
+  font-weight: 100;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/ExtraLight.woff');
+  font-weight: 200;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/Light.woff');
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/Book.woff');
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/Medium.woff');
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/Bold.woff');
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/ExtraBold.woff');
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Kievit";
+  src: font-url('kievit/Black.woff');
+  font-weight: 800;
+}
 
-// Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+// SF for numbers
+@font-face {
+  font-family: "San Francisco (Numbers)";
+  font-weight: 700;
+  src: font-url('sf-ui-display/SF-UI-Display-Bold.otf');
+  unicode-range: U+30-39; // U+30-39 is the range of 0-9 numbers.
+}
+@font-face {
+  font-family: "San Francisco (Numbers)";
+  font-weight: 200;
+  src: font-url('sf-ui-display/SF-UI-Display-Light.otf');
+  unicode-range: U+30-39; // U+30-39 is the range of 0-9 numbers.
+}
+@font-face {
+  font-family: "San Francisco (Numbers)";
+  font-weight: 400;
+  src: font-url('sf-ui-display/SF-UI-Display-Regular.otf');
+  unicode-range: U+30-39; // U+30-39 is the range of 0-9 numbers.
+}
 
-// To use a font file (.woff) uncomment following lines
-// @font-face {
-//   font-family: "Font Name";
-//   src: font-url('FontFile.eot');
-//   src: font-url('FontFile.eot?#iefix') format('embedded-opentype'),
-//        font-url('FontFile.woff') format('woff'),
-//        font-url('FontFile.ttf') format('truetype')
-// }
-// $my-font: "Font Name";
+$body-font: "San Francisco (Numbers)", "FreightSansPro", "Helvetica", "sans-serif";
+$headers-font: "San Francisco (Numbers)", "Kievit", "Helvetica", "sans-serif";

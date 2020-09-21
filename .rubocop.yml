@@ -1,42 +1,97 @@
 AllCops:
-  NewCops: enable
+  TargetRubyVersion: 2.6.6
   Exclude:
     - 'bin/**/*'
     - 'db/**/*'
     - 'config/**/*'
-    - 'node_modules/**/*'
+    - 'node_modules/**'
     - 'script/**/*'
     - 'support/**/*'
     - 'tmp/**/*'
-    - 'test/**/*'
 
-Style/ConditionalAssignment:
-  Enabled: false
-Style/StringLiterals:
-  Enabled: false
-Style/RedundantReturn:
-  Enabled: false
-Style/Documentation:
-  Enabled: false
-Style/WordArray:
-  Enabled: false
-Metrics/AbcSize:
-  Enabled: false
-Style/MutableConstant:
-  Enabled: false
-Style/SignalException:
-  Enabled: false
-Metrics/CyclomaticComplexity:
-  Enabled: false
-Style/MissingRespondToMissing:
-  Enabled: false
-Lint/MissingSuper:
-  Enabled: false
+# Disable Missing magic comment # frozen_string_literal: true
 Style/FrozenStringLiteralComment:
   Enabled: false
-Layout/LineLength:
-  Max: 120
-Style/EmptyMethod:
+# forces single assignment out of if/case statements
+Style/ConditionalAssignment:
   Enabled: false
-Bundler/OrderedGems:
+# forces correct use of single vs double quotes
+Style/StringLiterals:
+  Enabled: false
+# forces documentation of classes and modules
+Style/Documentation:
+  Enabled: false
+# forces specific regex syntax
+Style/RegexpLiteral:
+  Enabled: false
+# forces if to be potentialy replaced with guard clause return if
+Style/GuardClause:
+  Enabled: false
+# forces %w notation for array of words
+Style/WordArray:
+  Enabled: false
+# forces %w[] instead of %w()
+Style/PercentLiteralDelimiters:
+  Enabled: false
+# forces maximum on size of methods
+Metrics/AbcSize:
+  Enabled: false
+# forces max complexity of methods
+Metrics/CyclomaticComplexity:
+  Enabled: false
+# forces correct usage of fail vs raise
+Style/SignalException:
+  Enabled: false
+# forces %i[] for an array of symbols
+Style/SymbolArray:
+  Enabled: false
+# forces weird looking syntax on hashes as last argument of method
+Style/HashEachMethods:
+  Enabled: false
+# checks for uses of each_key and each_value Hash methods.
+Style/HashTransformKeys:
+  Enabled: false
+# looks for uses of _.each_with_object({}) {...}, _.map {...}.to_h, and Hash[_.map {...}]
+# that are actually just transforming the keys of a hash, and tries to use a simpler & faster call to transform_keys instead
+Style/HashTransformValues:
+  Enabled: false
+Layout/FirstHashElementIndentation:
+  Enabled: false
+# forces weird looking syntax on closing of parenthesis of multi-line methods
+Layout/ClosingParenthesisIndentation:
+  Enabled: false
+# increases the line length to 160 chars
+Metrics/LineLength:
+  Max: 160
+# increase the method length to 20 lines
+Metrics/MethodLength:
+  Max: 30
+Metrics/ClassLength:
+  Max: 200
+Metrics/PerceivedComplexity:
+  Max: 10
+# Allow extra spaces in arrays
+Layout/SpaceInsideArrayLiteralBrackets:
+  Enabled: false
+# ActiveAdmin and rake tasks need big blocks
+Metrics/BlockLength:
+  Exclude:
+    - 'app/admin/**/*'
+    - 'lib/tasks/**/*'
+    - '**/*_spec.rb'
+    - 'app/graphql/**/*'
+# Allow emojis in Code comments
+Style/AsciiComments:
+  Enabled: false
+# Allow $redis
+Style/GlobalVars:
+  Enabled: false
+# Allow compact syntax for style definitions
+Style/ClassAndModuleChildren:
+  Enabled: false
+# Aligning parameters does not make sense for Strong Params
+Layout/ParameterAlignment:
+  Enabled: false
+
+Style/NumericLiterals:
   Enabled: false

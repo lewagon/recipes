@@ -1,0 +1,5 @@
+<%= content_for :meta_title, "#{@recipe.name} - Recipes To Scrape" %>
+
+<div class="container my-5" id="recipe">
+  <%= render 'recipe', recipe: @recipe %>
+</div>
