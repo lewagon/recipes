@@ -1,4 +1,4 @@
-class RecipesController < ApplicationController
+class Api::V1::RecipesController < Api::V1::BaseController
   def index
     @pagy, @recipes = pagy(Recipe.all)
   end
@@ -6,8 +6,4 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
   end
-
-  def advanced_index; end
-
-  def advanced_show; end
 end
