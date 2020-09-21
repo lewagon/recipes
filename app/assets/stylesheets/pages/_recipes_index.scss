@@ -17,6 +17,9 @@
       object-fit: cover;
       object-position: center;
     }
+    .img-missing {
+      object-fit: contain;
+    }
   }
 }
 

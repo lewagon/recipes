@@ -12,10 +12,13 @@ class Recipe < ApplicationRecord
   validates :vegan, inclusion: { in: [true, false] }
   validates :gluten_free, inclusion: { in: [true, false] }
   validates :healthy, inclusion: { in: [true, false] }
-  validates :image_url, presence: true
 
   enum difficulty: { very_easy: 0, easy: 1, moderate: 2, hard: 3, very_hard: 4 }
   enum price: { cheap: 0, medium: 1, expensive: 2 }
 
   NUMBER = 1000
+
+  def image
+    image_url? ? image_url : 'food.svg'
+  end
 end
