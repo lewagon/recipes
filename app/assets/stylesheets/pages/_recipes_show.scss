@@ -9,4 +9,17 @@
     position: sticky;
     top: 20px;
   }
+
+  .ingredient {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  .ingredient-img {
+    width: 30px;
+    height: 40px;
+    object-fit: contain;
+    object-position: center;
+  }
 }

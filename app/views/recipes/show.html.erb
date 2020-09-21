@@ -19,6 +19,15 @@
           </small>
         </div>
         <p class="text-justify"><%= @recipe.description.html_safe %></p>
+        <h3>Ingredients</h3>
+        <div class="ingredients-container mb-3">
+          <% @recipe.ingredients.each do |ingredient| %>
+            <div class="ingredient">
+              <%= image_tag ingredient.image_url, alt: ingredient.name, class: 'mr-2 ingredient-img' %>
+              <p class="mb-0"><%= ingredient.name %></p>
+            </div>
+          <% end %>
+        </div>
         <h3>Instructions</h3>
         <% if @recipe.instructions.present? %>
           <p class="instructions"><%= @recipe.instructions.html_safe %></p>
