@@ -1,0 +1,41 @@
+<%= link_to action_name == 'show' ? root_path : advanced_recipes_path, class:'text-decoration-none text-dark', data: { turbolinks: action_name == 'advanced' } do %>
+  <span class="mdi mdi-keyboard-backspace"></span> back to all recipes
+<% end %>
+<div class="p-3 border bg-white rounded-lg">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <h2><%= recipe.name %></h2>
+      <% recipe.cuisines.each do |cuisine| %>
+        <span class="badge badge-success"><%= cuisine.name %></span>
+      <% end %>
+      <div class="d-flex align-items-center">
+        <small class="font-weight-lighter text-secondary mr-2"><i class="fas fa-clock mr-1"></i><span class="recipe-cooktime"><%= recipe.cooktime %> min</span></small>
+        <small class="font-weight-lighter text-secondary mr-4"><%= difficulty(recipe) %><span class="recipe-difficulty"><%= recipe.difficulty.humanize %></span></small>
+        <small class="text-secondary recipe-price" data-price="<%= recipe.price %>">
+          <% Recipe.prices.size.times do |i| %>
+            <span class="text-<%= i <= recipe.price_before_type_cast ? 'dark' : 'secondary' %>"><i class="mdi mdi-currency-gbp ml-n2"></i></span>
+          <% end %>
+        </small>
+      </div>
+      <p class="text-justify"><%= recipe.description.html_safe %></p>
+      <h3>Ingredients</h3>
+      <div class="ingredients-container mb-3">
+        <% recipe.ingredients.each do |ingredient| %>
+          <div class="ingredient">
+            <%= image_tag ingredient.image_url, alt: ingredient.name, class: 'mr-2 ingredient-img' %>
+            <p class="mb-0"><%= ingredient.name %></p>
+          </div>
+        <% end %>
+      </div>
+      <h3>Instructions</h3>
+      <% if recipe.instructions.present? %>
+        <p class="instructions"><%= recipe.instructions.html_safe %></p>
+      <% else %>
+        <p class="instructions text-muted">Sorry we're not sure how to prepare this recipe</p>
+      <% end %>
+    </div>
+    <div class="col-12 col-md-6">
+      <%= image_tag recipe.image_url, alt: recipe.name, class:'recipe-img' %>
+    </div>
+  </div>
+</div>

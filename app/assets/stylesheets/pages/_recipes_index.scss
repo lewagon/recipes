@@ -19,3 +19,14 @@
     }
   }
 }
+
+#recipes_advanced, #recipe_advanced {
+  position: relative;
+  min-height: 100vh;
+  .spinner-position {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

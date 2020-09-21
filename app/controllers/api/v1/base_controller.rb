@@ -1,4 +1,6 @@
 class Api::V1::BaseController < ActionController::API
+  include Pagy::Backend
+
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   private

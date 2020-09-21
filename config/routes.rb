@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   root to: 'recipes#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :recipes, only: :show do
-    get :advanced_index, on: :collection
-    get :advanced_show, on: :member
+    get :advanced, on: :collection, to: 'recipes#advanced_index'
+    get :advanced, on: :member, to: 'recipes#advanced_show'
   end
 
   namespace :api, defaults: { format: :json } do
