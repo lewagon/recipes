@@ -20,10 +20,11 @@ export default class extends Controller {
     this.containerTarget.innerHTML = '';
     this.showRecipe(false);
     const url = this.hasQueryTarget && this.queryTarget.value ? `${this.data.get('url')}?search[query]=${this.queryTarget.value}&${page}` : `${this.data.get('url')}?${page}`;
-    const redirectUrl = this.hasQueryTarget && this.queryTarget.value ? `${window.location.pathname}?search[query]=${this.queryTarget.value}&${page}` : `${window.location.pathname}?${page}`;
     fetch(url)
       .then(response => response.json())
       .then((data) => {
+        if (+page.match(/\d+/)[0] > data.last_page) page = 'page=1';
+        const redirectUrl = this.hasQueryTarget && this.queryTarget.value ? `${window.location.pathname}?search[query]=${this.queryTarget.value}&${page}` : `${window.location.pathname}?${page}`;
         this.spinnerTarget.classList.add('d-none');
         this.containerTarget.innerHTML = data.recipes;
         history.pushState({
