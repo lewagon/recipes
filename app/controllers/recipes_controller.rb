@@ -1,6 +1,4 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: :show
-
   def index
     query = params.dig(:search, :query)
     session[:query] = query.present? ? query : nil
