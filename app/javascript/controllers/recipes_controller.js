@@ -35,7 +35,7 @@ export default class extends Controller {
 
   renderRecipe(event) {
     this.showRecipes(false);
-    fetch(event.currentTarget?.dataset?.url || this.data.get('url'))
+    fetch(event.currentTarget?.dataset?.url || `/api/v1/recipes/${window.location.pathname.match(/\d+/)[0]}`)
       .then(response => response.json())
       .then((data) => {
         this.showRecipe(true, data.recipe);
@@ -44,7 +44,7 @@ export default class extends Controller {
         if (this.data.get('history')) {
           history.pushState({
             id: 'recipe',
-          }, `${data.name} - Recipes To Scrape`, `${data.id}/advanced`);
+          }, `${data.name} - Recipes To Scrape`, `/recipes/${data.id}/advanced`);
         }
       });
   }
