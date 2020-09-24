@@ -1,7 +1,6 @@
-<div class="container my-5" id="recipes_advanced">
-  <h1>All Recipes</h1>
-
-  <div class="recipes-container" data-controller="recipes" data-action="load@window->recipes#renderRecipes" data-recipes-url="<%= api_v1_recipes_path %>">
+<div class="container my-5" id="recipes_advanced" data-controller="recipes" data-action="load@window->recipes#renderRecipes" data-recipes-url="<%= api_v1_recipes_path %>">
+  <div class="recipes-container">
+    <h1>All Recipes</h1>
     <%= render 'recipes/search_form', remote: true %>
     <div class="spinner-position" data-target="recipes.spinner">
       <div class="spinner-border text-danger" role="status">

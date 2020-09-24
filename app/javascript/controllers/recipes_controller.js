@@ -5,16 +5,21 @@ export default class extends Controller {
 
   renderRecipes(event) {
     const paginationLink = this.paginationLinkTargets.find(link => link === event.currentTarget);
-    let page = 'page=1';
-    if (paginationLink) {
+    let page = '';
+    if (this.hasQueryTarget && this.queryTarget.value && event.currentTarget == this.formTarget) {
+      page = 'page=1';
+    }
+    else if (paginationLink) {
       page = paginationLink.href.split('?')[1];
-    } else if (window.location.search.match(/page=\d+/)[0]) {
+    } else if (window.location.search.match(/page=\d+/)) {
       page = window.location.search.match(/page=\d+/)[0];
+    } else {
+      page = 'page=1';
     }
     this.spinnerTarget.classList.remove('d-none');
     this.containerTarget.innerHTML = '';
-    const url = this.hasQueryTarget && this.queryTarget.value ? `${this.data.get('url')}?query=${this.queryTarget.value}&${page}` : `${this.data.get('url')}?${page}`;
-    const redirectUrl = this.hasQueryTarget && this.queryTarget.value ? `${window.location.pathname}?query=${this.queryTarget.value}&${page}` : `${window.location.pathname}?${page}`;
+    const url = this.hasQueryTarget && this.queryTarget.value ? `${this.data.get('url')}?search[query]=${this.queryTarget.value}&${page}` : `${this.data.get('url')}?${page}`;
+    const redirectUrl = this.hasQueryTarget && this.queryTarget.value ? `${window.location.pathname}?search[query]=${this.queryTarget.value}&${page}` : `${window.location.pathname}?${page}`;
     fetch(url)
       .then(response => response.json())
       .then((data) => {
