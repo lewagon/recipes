@@ -2,7 +2,12 @@ class RecipesController < ApplicationController
   def index
     query = params.dig(:search, :query)
     session[:query] = query.present? ? query : nil
-    @pagy, @recipes = pagy(session[:query].present? ? Recipe.search(query) : Recipe.all)
+
+    begin
+      @pagy, @recipes = pagy(session[:query].present? ? Recipe.search(query) : Recipe.all)
+    rescue Pagy::OverflowError => _e
+      @pagy, @recipes = pagy(session[:query].present? ? Recipe.search(query) : Recipe.all, page: 1)
+    end
   end
 
   def show
