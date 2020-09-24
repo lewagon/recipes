@@ -1,6 +1,6 @@
-<%= simple_form_for :search, url: root_path, html: { class: 'mb-4', data: { action: 'ajax:success->recipes#searchRecipes' } }, method: :get, remote: action_name == 'advanced_index' do |f| %>
+<%= simple_form_for :search, url: root_path, html: { class: 'mb-4', data: { action: 'submit->recipes#renderRecipes', target: 'recipes.form' } }, method: :get, remote: remote do |f| %>
   <div class="d-flex align-items-center border rounded bg-white form-wrapper">
-    <%= f.input :query, label: false, placeholder: 'Search for a recipe', wrapper_html: { class: 'flex-grow-1 mb-0' }, input_html: { class: 'flex-grow-1 border-0' } %>
+    <%= f.input :query, label: false, placeholder: 'Search for a recipe', wrapper_html: { class: 'flex-grow-1 mb-0' }, input_html: { class: 'flex-grow-1 border-0', data: { target: 'recipes.query' }, value: params.dig(:search, :query) || params[:query] } %>
     <%= f.button :button, type: :submit do %>
       <big><span class="mdi mdi-magnify text-danger"></span></big>
     <% end %>
