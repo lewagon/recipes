@@ -1,4 +1,4 @@
-<%= link_to action_name == 'show' ? root_path(search: { query: session[:query] }) : advanced_recipes_path, class:'text-decoration-none text-dark', data: { turbolinks: action_name == 'advanced' } do %>
+<%= link_to action_name == 'show' ? root_path(search: { query: session[:query] }) : advanced_recipes_path(search: { query: session[:query] }), class:'text-decoration-none text-dark', data: { turbolinks: action_name == 'advanced' } do %>
   <span class="mdi mdi-keyboard-backspace"></span> back to <%= session[:query].present? ? 'search results' : 'all recipes' %>
 <% end %>
 <div class="p-3 border bg-white rounded-lg">
