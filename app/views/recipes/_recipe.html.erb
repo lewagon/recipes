@@ -4,7 +4,7 @@
 <div class="p-3 border bg-white rounded-lg">
   <div class="row">
     <div class="col-12 col-md-6 order-12 order-md-1">
-      <h2><%= recipe.name %></h2>
+      <h2 data-target="recipes.title" data-title="<%= recipe.name %>"><%= recipe.name %></h2>
       <% recipe.cuisines.each do |cuisine| %>
         <span class="badge badge-success"><%= cuisine.name %></span>
       <% end %>
