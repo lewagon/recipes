@@ -1,4 +1,6 @@
 class Recipe < ApplicationRecord
+  include PgSearch::Model
+
   has_many :ingredients, dependent: :destroy
   has_many :recipe_cuisines, dependent: :destroy
   has_many :cuisines, through: :recipe_cuisines
@@ -17,6 +19,16 @@ class Recipe < ApplicationRecord
   enum price: { cheap: 0, medium: 1, expensive: 2 }
 
   NUMBER = 1000
+
+  pg_search_scope :search,
+                  against: [ :name, :description, :instructions ],
+                  associated_against: {
+                    ingredients: [ :name ],
+                    cuisines: [ :name ]
+                  },
+                  using: {
+                    tsearch: { prefix: true }
+                  }
 
   def image
     image_url? ? image_url : 'food.svg'
