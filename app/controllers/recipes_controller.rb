@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
     begin
       @pagy, @recipes = pagy(session[:query].present? ? Recipe.search(query) : Recipe.all)
     rescue Pagy::OverflowError => _e
-      @pagy, @recipes = pagy(session[:query].present? ? Recipe.search(query) : Recipe.all, page: 1)
+      redirect_to root_path(page: 1)
     end
   end
 
