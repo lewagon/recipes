@@ -1,9 +1,8 @@
-<%= content_for :meta_title, "#{@recipe.name} - Recipes To Scrape" %>
-
-<div class="container my-5" id="recipe_advanced" data-controller="recipes" data-action="load@window->recipes#renderRecipe" data-recipes-url="<%= api_v1_recipe_path(@recipe) %>">
-  <div class="spinner-position">
+<div class="container my-5" id="recipe_advanced" data-controller="recipes" data-action="load@window->recipes#renderRecipe">
+  <div class="spinner-position" data-target="recipes.spinner">
     <div class="spinner-border text-danger" role="status">
       <span class="sr-only">Loading recipes...</span>
     </div>
   </div>
+  <div data-target="recipes.recipe"></div>
 </div>

@@ -2,6 +2,7 @@
   <h1>All Recipes</h1>
 
   <div class="recipes-container" data-controller="recipes" data-action="load@window->recipes#renderRecipes">
-    <%= render 'recipes', recipes: @recipes, pagy: @pagy %>
+    <%= render 'recipes/search_form', remote: false %>
+    <%= render 'recipes/recipes', recipes: @recipes, pagy: @pagy, remote: false %>
   </div>
 </div>
