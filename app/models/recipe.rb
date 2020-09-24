@@ -21,7 +21,7 @@ class Recipe < ApplicationRecord
   NUMBER = 1000
 
   pg_search_scope :search,
-                  against: [ :name, :description, :instructions ],
+                  against: [ :name, :instructions ],
                   associated_against: {
                     ingredients: [ :name ],
                     cuisines: [ :name ]

@@ -1,0 +1,8 @@
+<%= simple_form_for :search, url: root_path, html: { class: 'mb-4', data: { action: 'ajax:success->recipes#searchRecipes' } }, method: :get, remote: action_name == 'advanced_index' do |f| %>
+  <div class="d-flex align-items-center border rounded bg-white form-wrapper">
+    <%= f.input :query, label: false, placeholder: 'Search for a recipe', wrapper_html: { class: 'flex-grow-1 mb-0' }, input_html: { class: 'flex-grow-1 border-0' } %>
+    <%= f.button :button, type: :submit do %>
+      <big><span class="mdi mdi-magnify text-danger"></span></big>
+    <% end %>
+  </div>
+<% end %>
