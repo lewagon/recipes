@@ -35,11 +35,12 @@ export default class extends Controller {
 
   renderRecipe(event) {
     this.showRecipes(false);
+    this.spinnerTarget.classList.remove('d-none');
+    if (this.hasTitleTarget) this.titleTarget.classList.add('d-none');
     fetch(event.currentTarget?.dataset?.url || `/api/v1/recipes/${window.location.pathname.match(/\d+/)[0]}`)
       .then(response => response.json())
       .then((data) => {
         this.showRecipe(true, data.recipe);
-        this.titleTarget.classList.add('d-none');
         this.spinnerTarget.classList.add('d-none');
         if (this.data.get('history')) {
           history.pushState({
