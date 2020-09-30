@@ -1,30 +1,32 @@
-<div class="row">
-  <% recipes.each do |recipe| %>
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-      <div class="recipe my-3">
-        <%= link_to action_name == 'index' ? recipe_path(recipe) : advanced_recipe_path(recipe), class: 'text-decoration-none', data: { turbolinks: action_name == 'index', id: recipe.id, name: recipe.name, action: 'click->recipes#renderRecipe', url: api_v1_recipe_path(recipe) }, remote: remote do %>
-          <%= image_tag recipe.image, class: "recipe-img #{'img-missing' unless recipe.image_url?}" %>
-          <div class="p-2 recipe-details">
-            <div class="d-flex align-items-center justify-content-between">
-              <div>
-                <small class="font-weight-lighter text-secondary mr-2"><i class="fas fa-clock mr-1"></i><span class="recipe-cooktime"><%= recipe.cooktime %> min</span></small>
-                <small class="font-weight-lighter text-secondary mr-2"><%= difficulty(recipe) %><span class="recipe-difficulty"><%= recipe.difficulty.humanize %></span></small>
+<div id="recipes">
+  <div class="row">
+    <% recipes.each do |recipe| %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <div class="recipe my-3">
+          <%= link_to action_name == 'index' ? recipe_path(recipe) : advanced_recipe_path(recipe), class: 'text-decoration-none', data: { turbolinks: action_name == 'index', id: recipe.id, name: recipe.name, action: 'click->recipes#renderRecipe', url: api_v1_recipe_path(recipe) }, remote: remote do %>
+            <%= image_tag recipe.image, class: "recipe-img #{'img-missing' unless recipe.image_url?}" %>
+            <div class="p-2 recipe-details">
+              <div class="d-flex align-items-center justify-content-between">
+                <div>
+                  <small class="font-weight-lighter text-secondary mr-2"><i class="fas fa-clock mr-1"></i><span class="recipe-cooktime"><%= recipe.cooktime %> min</span></small>
+                  <small class="font-weight-lighter text-secondary mr-2"><%= difficulty(recipe) %><span class="recipe-difficulty"><%= recipe.difficulty.humanize %></span></small>
+                </div>
+                <small class="text-secondary flex-shrink-0 flex-grow-1 text-right recipe-price" data-price="<%= recipe.price %>">
+                  <% Recipe.prices.size.times do |i| %>
+                    <span class="text-<%= i <= recipe.price_before_type_cast ? 'dark' : 'secondary' %>"><i class="mdi mdi-currency-gbp ml-n2"></i></span>
+                  <% end %>
+                </small>
               </div>
-              <small class="text-secondary flex-shrink-0 flex-grow-1 text-right recipe-price" data-price="<%= recipe.price %>">
-                <% Recipe.prices.size.times do |i| %>
-                  <span class="text-<%= i <= recipe.price_before_type_cast ? 'dark' : 'secondary' %>"><i class="mdi mdi-currency-gbp ml-n2"></i></span>
-                <% end %>
-              </small>
+              <p class="text-dark text-truncate w-100 font-weight-bold mb-0 recipe-name"><%= recipe.name %></p>
             </div>
-            <p class="text-dark text-truncate w-100 font-weight-bold mb-0 recipe-name"><%= recipe.name %></p>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       </div>
+    <% end %>
+  </div>
+  <% if pagy.pages > 1 %>
+    <div class="d-flex align-items-center justify-content-end">
+      <%== pagy_bootstrap_nav(pagy) %>
     </div>
   <% end %>
 </div>
-<% if pagy.pages > 1 %>
-  <div class="d-flex align-items-center justify-content-end">
-    <%== pagy_bootstrap_nav(pagy) %>
-  </div>
-<% end %>
