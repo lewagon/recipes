@@ -17,7 +17,7 @@
           <% end %>
         </small>
       </div>
-      <p class="text-justify"><%= recipe.description.html_safe %></p>
+      <p class="text-justify recipe-description"><%= recipe.description.html_safe %></p>
       <h3>Ingredients</h3>
       <div class="ingredients-container mb-3">
         <% recipe.ingredients.each do |ingredient| %>
