@@ -18,7 +18,7 @@ class Recipe < ApplicationRecord
   enum difficulty: { very_easy: 0, easy: 1, moderate: 2, hard: 3, very_hard: 4 }
   enum price: { cheap: 0, medium: 1, expensive: 2 }
 
-  NUMBER = 5000
+  NUMBER = 100
 
   pg_search_scope :search,
                   against: [ :name, :instructions ],
