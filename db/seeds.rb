@@ -12,6 +12,8 @@ response = JSON.parse(RestClient.get url, content_type: :json)
 recipes = response['recipes']
 
 recipes.each do |recipe|
+  next if Recipe.find_by name: recipe['title']
+
   puts "Creating #{recipe['title']}"
   last_recipe = Recipe.create!(
     name: recipe['title'],
