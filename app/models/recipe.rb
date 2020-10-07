@@ -21,7 +21,7 @@ class Recipe < ApplicationRecord
   NUMBER = 100
 
   pg_search_scope :search,
-                  against: [ :name, :instructions ],
+                  against: [ :name ],
                   using: {
                     tsearch: { prefix: true }
                   }
