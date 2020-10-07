@@ -4,12 +4,12 @@ class Api::V1::RecipesController < Api::V1::BaseController
     session[:query] = query.present? ? query : nil
     begin
       @pagy, @recipes = pagy(
-        session[:query].present? ? Recipe.search(session[:query]) : Recipe.all,
+        session[:query].present? ? Recipe.order(:name).search(session[:query]) : Recipe.order(:name),
         link_extra: "data-remote='true' data-action='click->recipes#renderRecipes' data-target='recipes.paginationLink'"
       )
     rescue Pagy::OverflowError => _e
       @pagy, @recipes = pagy(
-        session[:query].present? ? Recipe.search(session[:query]) : Recipe.all,
+        session[:query].present? ? Recipe.order(:name).search(session[:query]) : Recipe.order(:name),
         page: 1,
         link_extra: "data-remote='true' data-action='click->recipes#renderRecipes' data-target='recipes.paginationLink'"
       )
