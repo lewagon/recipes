@@ -22,10 +22,6 @@ class Recipe < ApplicationRecord
 
   pg_search_scope :search,
                   against: [ :name, :instructions ],
-                  associated_against: {
-                    ingredients: [ :name ],
-                    cuisines: [ :name ]
-                  },
                   using: {
                     tsearch: { prefix: true }
                   }
