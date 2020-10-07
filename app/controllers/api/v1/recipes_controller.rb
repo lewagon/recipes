@@ -1,6 +1,6 @@
 class Api::V1::RecipesController < Api::V1::BaseController
   def index
-    query = params.dig(:search, :query)
+    query = params.dig(:search, :query) || params.dig(:query)
     session[:query] = query.present? ? query : nil
     begin
       @pagy, @recipes = pagy(

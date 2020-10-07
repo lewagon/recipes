@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    query = params.dig(:search, :query)
+    query = params.dig(:search, :query) || params.dig(:query)
     session[:query] = query.present? ? query : nil
 
     begin
