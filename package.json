@@ -1,6 +1,9 @@
 {
   "name": "recipes",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "dependencies": {
     "@mdi/font": "^5.6.55",
     "@rails/actioncable": "^6.0.0",
