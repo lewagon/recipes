@@ -2,7 +2,7 @@
   "name": "recipes",
   "private": true,
   "engines": {
-    "node": "12.x"
+    "node": "14.x"
   },
   "dependencies": {
     "@mdi/font": "^5.6.55",
