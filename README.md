@@ -1,9 +1,12 @@
 ## Deployment
 
-```bash
-git remote add dokku dokku@students.lewagon.engineering:recipes
-git push dokku master
+Trigger GitHub Action
 
-# If necessary
+
+# Seed database
+
+If necessary, you can wipe and re-seed the `Recipe` database with:
+
+```
 ssh dokku@students.lewagon.engineering run recipes rails db:seed
 ```
